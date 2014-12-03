@@ -87,7 +87,8 @@ for (var i = 0; i < langs.length; i++) {
 
 var showInfo = function(s) {
     if (s) {
-        $info.each(function() {
+        $info.find('p').each(function() {
+            console.log($(this).attr('id'));
             if ($(this).attr('id') === s) {
                 $(this).css('display', 'inline');
             } else {
@@ -148,8 +149,8 @@ var capitalize = function(s) {
 
 var currentStyle;
 
-var showButtons = function (style) {
-    if(style === currentStyle) {
+var showButtons = function(style) {
+    if (style === currentStyle) {
         return;
     }
     currentStyle = style;
@@ -158,7 +159,7 @@ var showButtons = function (style) {
 };
 
 var copyButton = function() {
-    if(recognizing) {
+    if (recognizing) {
         recognizing = false;
         recognition.stop();
     }
@@ -168,7 +169,7 @@ var copyButton = function() {
 };
 
 var startButton = function(event) {
-    if(recognizing) {
+    if (recognizing) {
         recognition.stop();
         return;
     }
@@ -221,17 +222,17 @@ if (!('webkitSpeechRecognition' in window)) {
 
     recognition.onend = function() {
         recognizing = false;
-        if(ignoreOnend) {
+        if (ignoreOnend) {
             return;
         }
 
         $startImg.attr('src', 'images/mic.gif');
-        if(!finalTranscript) {
+        if (!finalTranscript) {
             showInfo('infoStartfo');
             return;
         }
         showInfo('');
-        if(window.getSelection) {
+        if (window.getSelection) {
             window.getSelection().removeAllRanges();
             var range = document.createRange();
             range.selectNode(document.getElementById('finalSpan'));
@@ -241,7 +242,7 @@ if (!('webkitSpeechRecognition' in window)) {
 
     recognition.onresult = function(event) {
         var interimTransscript = '';
-        for (var  i= event.resultIndex; i < event.results.length; ++i) {
+        for (var i = event.resultIndex; i < event.results.length; ++i) {
             if (event.results[i].isFinal) {
                 finalTranscript += event.results[i][0].transcript;
             } else {
@@ -251,7 +252,7 @@ if (!('webkitSpeechRecognition' in window)) {
         finalTranscript = capitalize(finalTranscript);
         $finalSpan.text(linebreak(finalTranscript));
         $interimSpan.text(linebreak(interimTransscript));
-        if(finalTranscript || interimTransscript) {
+        if (finalTranscript || interimTransscript) {
             showButtons('inline-block');
         }
     };

@@ -13,8 +13,7 @@ body {
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
-.marketing,
-.footer {
+.marketing {
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -30,13 +29,6 @@ body {
   margin-bottom: 0;
   line-height: 40px;
   padding-bottom: 19px;
-}
-
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
 }
 
 .container-narrow > hr {
@@ -150,7 +142,10 @@ body {
     font-size: 20px;
     text-align: center;
     color: #777;
-    visibility: hidden;
+  }
+
+  #info p {
+    display: none;
   }
   #results {
     font-size: 14px;
@@ -160,7 +155,7 @@ body {
     text-align: left;
     min-height: 150px;
   }
-  #start_button {
+  #startButton {
     border: 0;
     background-color:transparent;
     padding: 0;
