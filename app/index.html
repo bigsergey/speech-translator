@@ -25,7 +25,7 @@
 
 
     <h1 class="center" id="headline">Speech-translator</h1>
-    <div id="info">
+    <div id="info" class="info">
         <p id="infoStart">Click on the microphone icon and begin speaking.</p>
         <p id="infoSpeakNow">Speak now.</p>
         <p id="infoNoSpeech">No speech was detected. You may need to adjust your
@@ -49,6 +49,9 @@
         <div id="results">
             <span id="finalSpan" class="final"></span>
             <span id="interimSpan" class="interim"></span>
+        </div>
+        <div id="translation-results">
+            <span id="finalSpanTranslation" class="final"></span>
         </div>
     </div>
     <div class="center">
@@ -87,11 +90,11 @@
     <script src="bower_components/bootstrap/js/scrollspy.js"></script>
     <script src="bower_components/bootstrap/js/collapse.js"></script>
     <script src="bower_components/bootstrap/js/tab.js"></script>
+    <script src="bower_components/tcp-socket/src/tcp-socket.js"></script>
     <!-- endbuild -->
 
     <!-- build:js({app,.tmp}) scripts/main.js -->
     <script src="scripts/main.js"></script>
-    <script type="text/javascript" src="scripts/speech-api.js"></script>
     <!-- endbuild -->
 </body>
 

@@ -118,11 +118,13 @@ body {
   .interim {
     color: gray;
   }
+  #info {
+    display: none;
+  }
   .info {
     font-size: 14px;
     text-align: center;
     color: #777;
-    display: none;
   }
   .right {
     float: right;
@@ -138,13 +140,13 @@ body {
     font-size: 40px;
     font-weight: 300;
   }
-  #info {
+  .info {
     font-size: 20px;
     text-align: center;
     color: #777;
   }
 
-  #info p {
+  .info p {
     display: none;
   }
   #results {
@@ -153,8 +155,18 @@ body {
     border: 1px solid #ddd;
     padding: 15px;
     text-align: left;
-    min-height: 150px;
+    min-height: 100px;
   }
+
+  #translation-results {
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+    min-height: 100px;
+  }
+
   #startButton {
     border: 0;
     background-color:transparent;
