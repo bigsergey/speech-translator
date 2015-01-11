@@ -75,21 +75,39 @@ var langs = [
 var hostname;
 var port;
 var $finalSpanTranslation = $('#finalSpanTranslation');
-var tcp;
+var connection;
+var sendToMoses;
 
 var init = function(_hostname, _port) {
     hostname = _hostname || '127.0.0.1';
     port = _port || 80;
-    tcp = navigator.TCPSocket.open(_hostname, _port);
+    
+    connection = new WebSocket('ws://' + hostname + ":" + port);
+
+    connection.onopen = function() {
+        console.log('connection opened');
+    };
+
+    connection.onclose = function() {
+        console.log('connection closed');
+    };
+
+    connection.onerror = function() {
+        console.log('connection error');
+    };
+
+    connection.onmessage = function(event) {
+        $finalSpanTranslation.text(event.data);
+    };
+
+    sendToMoses = function(text) {
+        console.log(text);
+        connection.send(text);
+    };
 };
 
-var sendToMoses = function(text) {
-    console.log(text);
-    $finalSpanTranslation.text(text);
-    $.get('http://104.131.177.66:8080', function(data) {
-        console.log(data);
-    });
-};
+init('localhost', 8001);
+
 
 var $startButton = $('#startButton');
 var $startImg = $('#startImg');
